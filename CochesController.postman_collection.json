@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "80a2f75a-4c49-4575-a27e-54374529ab34",
+		"name": "CochesController",
+		"description": "# Testa conexiones a la aplicación CochesController.\n\n## Implementa los métodos CRUD\n\n##Comandos GET\n* GET all\n* GET filter/nombre/{nombre}\n* GET filter/tipo/{tipo}\n* GET filter/color/{color}\n* GET filter/puertas/{puertas}\n\n##Comando POST\n* POST {tipo}/{fabricante}/{nombre}/{color}/{puertas}/{extra}\n\n##Comando PUT\n* PUT {nombre}/{color}/{puertas}/{extra}\n\n##Comando DELETE\n* DELETE {nombre}\n\n##Sobre las variables {tipo} y {extra}\n* Los tipos aceptados son \"combustion\", \"electrico\" e \"hibrido\"\n* Si el coche es del tipo:\n * Combustion - extra es el valor de marchas (inteiro)\n * Electrico - extra es el valor de autonomiaKm (inteiro)\n * Hibrido - extra es el valor de tanqueHidrogeno (inteiro)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "200",
+			"item": [
+				{
+					"name": "ReadAllCoches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}all",
+							"host": [
+								"{{url}}all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FilterNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{filterCoche}}escort",
+							"host": [
+								"{{url}}{{filterCoche}}escort"
+							]
+						},
+						"description": "## filter/nombre/{nombre}\n\n* Para buscar por otro coche cambiar el ultimo campo {nombre}"
+					},
+					"response": []
+				},
+				{
+					"name": "FilterPuertas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{filterPuertas}}4",
+							"host": [
+								"{{url}}{{filterPuertas}}4"
+							]
+						},
+						"description": "## filter/puertas/{puertas}\n\n* Para buscar por otro numero de puertas cambiar el ultimo campo {puertas}"
+					},
+					"response": []
+				},
+				{
+					"name": "FilterColor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{filterColor}}negro",
+							"host": [
+								"{{url}}{{filterColor}}negro"
+							]
+						},
+						"description": "## filter/color/{color}\n\n* Para buscar por otro color cambiar el ultimo campo {color}"
+					},
+					"response": []
+				},
+				{
+					"name": "FilterTipo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{filterTipo}}combustion",
+							"host": [
+								"{{url}}{{filterTipo}}combustion"
+							]
+						},
+						"description": "## filter/tipo/{tipo}\n\n* Para buscar por otro tipo de coche cambiar el ultimo campo {tipo}"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCoche",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}electrico/tesla/teslaXZ/blanco/4/600",
+							"host": [
+								"{{url}}electrico"
+							],
+							"path": [
+								"tesla",
+								"teslaXZ",
+								"blanco",
+								"4",
+								"600"
+							]
+						},
+						"description": "## {tipo}/{fabricante}/{nombre}/{color}/{puertas}/{extra}\n\n* Todos los campos son variables\n* Si el coche es del tipo:\n * Combustion - extra es el valor int de marchas\n * Electrico - extra es el valor int de autonomiaKm\n * Hibrido - extra es el valor int de tanqueHidrogeno"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCoche",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}opala/blanco/4/6",
+							"host": [
+								"{{url}}opala"
+							],
+							"path": [
+								"blanco",
+								"4",
+								"6"
+							]
+						},
+						"description": "## {nombre}/{color}/{puertas}/{extra}\n\n* Todos los campos son variables\n* Si el coche es del tipo:\n * Combustion - extra es el valor int de marchas\n * Electrico - extra es el valor int de autonomiaKm\n * Hibrido - extra es el valor int de tanqueHidrogeno"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCoche",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}tesla-Z",
+							"host": [
+								"{{url}}tesla-Z"
+							]
+						},
+						"description": "## {nombre}\n\n* Escribe apenas el nombre del coche a ser removido"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "404",
+			"item": [
+				{
+					"name": "CreateCoche fail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}demano/ikea/ikeaX/marrom/0/0",
+							"host": [
+								"{{url}}demano"
+							],
+							"path": [
+								"ikea",
+								"ikeaX",
+								"marrom",
+								"0",
+								"0"
+							]
+						},
+						"description": "* Retorna 404 - NOT_FOUND cuando el tipo de coche no existe"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
